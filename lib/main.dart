@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:hackathon/assets/colors.dart';
-import 'package:hackathon/ui/artBoard/home.dart';
+import 'package:hackathon/ui/artBoard/artBoard_view.dart';
+import 'package:hackathon/ui/authentication/login/login_view.dart';
+import 'package:hackathon/ui/authentication/signUp/signup_view.dart';
+import 'package:hackathon/ui/navbar/custom_navbar_view.dart';
+import 'package:hackathon/ui/onBoard/onBoard_view.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,6 +44,10 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       // Theme.of(context).primaryColor;
       home:ArtBoard() ,
+      // home: OnBoardView(),
+      // home: LoginView(),
+      // home: SignUpView(),
+      // home: CustomNavbar(),
 
     );
   }

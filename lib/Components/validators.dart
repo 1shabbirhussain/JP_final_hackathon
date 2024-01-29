@@ -1,24 +1,19 @@
-String? inputValidator(String? value) {
-  if (value == null || value.isEmpty) {
-    return 'Please enter a value';
-  }
-  return null;
-}
+import 'dart:async';
 
-String? phoneNumberValidator(String? value) {
-  if (value == null || value.isEmpty) {
-    return 'Please enter a phone number';
-  }
+class Validator {
+  final validateEmail = StreamTransformer<String, String>.fromHandlers(
+      handleData: (email, sink) => {
+            if (email.contains("@") && email.contains(".com"))
+              {sink.add(email)}
+            else
+              sink.addError("Enter a valid email")
+          });
 
-  // Remove any non-numeric characters from the input
-  String numericValue = value.replaceAll(RegExp(r'[^0-9]'), '');
-
-  // Regular expression for a simple phone number format (10 digits)
-  final RegExp phoneNumberRegExp = RegExp(r'^[0-9]{10}$');
-
-  if (!phoneNumberRegExp.hasMatch(numericValue)) {
-    return 'Please enter a valid 10-digit phone number';
-  }
-
-  return null;
+  final validatePassword = StreamTransformer<String, String>.fromHandlers(
+      handleData: (password, sink) => {
+            if (password.length > 5)
+              {sink.add(password)}
+            else
+              sink.addError("Password must be atleast of 5 characters")
+          });
 }
